@@ -1,0 +1,44 @@
+/*body {
+	text-align: center;*/
+
+/*td {
+	border-top: 5px red solid;
+	border-right: 5px black solid;
+	border-bottom: 5px green solid;
+	border-left: 5px orange solid;
+
+	padding: 100px 100px 100px 100px;
+
+
+*/
+
+/*.top {
+	box-sizing: content-box;
+	border: 55px solid green;
+	background: red;
+
+	padding: 100px 100px 100px 100px;
+}*/
+
+td {
+	width: 100px;
+	height: 100px;
+}
+
+.vertical {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.horizontal {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+table {
+	margin: auto;
+}
+
+h1 {
+	text-align: center;
+}
