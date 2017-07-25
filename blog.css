@@ -1,0 +1,73 @@
+/*border color: #bdc3c7
+date color: #3498db
+h2 color: #2c3e50
+
+font: source sans pro*/
+
+h1 {
+	color: #2c3e50;
+	font-family: Source Sans Pro;
+	font-weight: 700;
+	font-size: 2.0rem;
+}
+
+h4 {
+	color: #3498db;
+	letter-spacing: 0.2em; /*suppose to be rem */
+	text-transform: uppercase;
+	font-family: Source Sans Pro;
+}
+
+
+body {
+	border: 16px solid #bdc3c7;
+	margin-top: 20px ;
+	margin-right: 20%;
+	margin-bottom: 50px;
+	margin-left: 20%;
+	padding-left: 20px;
+	font-family: Source Sans Pro;
+}
+
+/* Solution from Colt - much simpler */
+
+/*body {
+	border: 20px solid #bdc3c7;
+	padding: 20px;
+	max-width: 700px;
+	width: 80%;
+	margin: 20px auto;
+	font-family: Source Sans Pro;
+}
+*/
+	p {
+	font-family: Source Sans Pro; 
+}
+
+
+
+.block {
+	border-left: 5px #bdc3c7 solid;
+	padding-left: 5px;
+
+}
+
+/* Glyph, by Harry Roberts */
+
+hr.style-eight {
+    margin-right: 20px;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+
+}
+hr.style-eight:after {
+    content: '\002665';
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}
