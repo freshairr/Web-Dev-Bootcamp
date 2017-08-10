@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+	<link rel="stylesheet" type="text/css" href="circles.css">
+
+	<script type="text/paperscript" canvas="myCanvas">
+
+	var keyData = {
+		a: {
+			color: "#F8B195",
+			sound: new Howl({
+      			src: ['sounds/bubbles.mp3']
+      		})
+		},
+		s: {
+			color: "#F67280",
+			sound: new Howl({
+				src: ['sounds/clay.mp3']
+			})
+		},
+		d: {
+			color: "#C06C84",
+			sound: new Howl({
+				src: ['sounds/confetti.mp3']
+			})
+		},
+		f: {
+			color: "#6C5B7B",
+			sound: new Howl({
+      			src: ['sounds/corona.mp3']
+      		})
+		},
+		g: {
+			color: "#355C7D",
+			sound: new Howl({
+				src: ['sounds/dotted-spiral.mp3']
+			})
+		},
+		h: {
+			color: "#99B898",
+			sound: new Howl({
+      			src: ['sounds/flash-1.mp3']
+      		})
+		},
+		j: {
+			color: "#FECEAB",
+			sound: new Howl({
+				src: ['sounds/flash-2.mp3']
+			})
+		},
+		k: {
+			color: "#FF847C",
+			sound: new Howl({
+				src: ['sounds/flash-3.mp3']
+			})
+		},
+		l: {
+			color: "#E84A5F",
+			sound: new Howl({
+      			src: ['sounds/glimmer.mp3']
+      		})
+		},
+		q: {
+			color: "#2A363B",
+			sound: new Howl({
+				src: ['sounds/moon.mp3']
+			})
+		},
+		w: {
+			color: "#DCEDC2",
+			sound: new Howl({
+      			src: ['sounds/pinwheel.mp3']
+      		})
+		},
+		e: {
+			color: "#A8E6CE",
+			sound: new Howl({
+				src: ['sounds/piston-1.mp3']
+			})
+		},
+		r: {
+			color: "yellow",
+			sound: new Howl({
+				src: ['sounds/piston-2.mp3']
+			})
+		},
+		t: {
+			color: "#FFD3B5",
+			sound: new Howl({
+      			src: ['sounds/piston-3.mp3']
+      		})
+		},
+		y: {
+			color: "#FFAAA6",
+			sound: new Howl({
+				src: ['sounds/prism-1.mp3']
+			})
+		},
+		u: {
+			color: "#FF8C94",
+			sound: new Howl({
+      			src: ['sounds/prism-2.mp3']
+      		})
+		},
+		i: {
+			color: "#A8A7A7",
+			sound: new Howl({
+				src: ['sounds/prism-3.mp3']
+			})
+		},
+		o: {
+			color: "#CC527A",
+			sound: new Howl({
+				src: ['sounds/splits.mp3']
+			})
+		},
+		p: {
+			color: "#E8175D",
+			sound: new Howl({
+      			src: ['sounds/squiggle.mp3']
+      		})
+		},
+		z: {
+			color: "#474747",
+			sound: new Howl({
+				src: ['sounds/strike.mp3']
+			})
+		},
+		x: {
+			color: "#363636",
+			sound: new Howl({
+      			src: ['sounds/suspension.mp3']
+      		})
+		},
+		c: {
+			color: "#E1F5C4",
+			sound: new Howl({
+				src: ['sounds/timer.mp3']
+			})
+		},
+		v: {
+			color: "#EDE574",
+			sound: new Howl({
+				src: ['sounds/ufo.mp3']
+			})
+		},
+		b: {
+			color: "#F9D423",
+			sound: new Howl({
+      			src: ['sounds/veil.mp3']
+      		})
+		},
+		n: {
+			color: "#FC913A",
+			sound: new Howl({
+				src: ['sounds/wipe.mp3']
+			})
+		},
+		m: {
+			color: "#FF4E50",
+			sound: new Howl({
+      			src: ['sounds/zig-zag.mp3']
+      		})
+		}
+	}
+
+	var circles = [];
+
+	function onKeyDown(event){
+		if(keyData[event.key]){
+			//when you touch any key, make new random point on the canvas
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPoint = Point.random();
+			var point = maxPoint * randomPoint;
+			//create new circle at randomPoint with radius x
+			var newCircle = new Path.Circle(point, 500)
+			newCircle.fillColor = keyData[event.key].color; //takes key that was typed in and plugs in KeyData to generate color+sound
+			keyData[event.key].sound.play();
+			circles.push(newCircle); //each newly created circle we are pushing it into the array
+		}
+	}	
+
+		/* logic is present. but too if statements/conditionals for each key - better to create separate object at start
+		//if key is a
+		if(event.key === "a"){
+			//play sound1
+			sound.play();
+			newCircle.fillColor = "purple"
+		}
+		//if  key is s
+		else if(event.key ==="s"){
+			//play sound2
+			sound2.play();
+			newCircle.fillColor = "#16a085"
+		} else {
+			newCircle.fillColor = "orange";
+		} 
+		*/
+
+	function onFrame(event){ //on every new frame we loop through all the circles in the array 
+		for(var i = 0; i < circles.length; i++){
+			circles[i].fillColor.hue += 1; //add 1 to the hue of each circle
+			circles[i].scale(.9); //multiple the scale of each circle - shrinking it each frame
+		}
+	}
+
+/*
+	//loop to generate circles in a line	
+	for(var x = 0; x < 1000; x+=100){
+		//repeat loop on y axis
+		for(var y = 0; y < 1000; y+=100){
+			new Path.Circle(new Point(x, y), 10).fillColor = 'green';	
+	}
+*/
+
+	</script>
+</head>
+<body>
+
+<canvas id="myCanvas" resize></canvas>
+
+</body>
+</html> 
